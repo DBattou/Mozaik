@@ -1,2 +1,2 @@
 # Mozaik
-Create a big mozaik image made of smaller images
+Ruby APP. Create an image made of several images

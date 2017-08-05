@@ -1,0 +1,12 @@
+{
+    "name": "example.jpg",
+    "width": 900,
+    "height": 950,
+    "backgroundColor": "purple", 
+    "inputImg": [
+        {"URL": "http://www.a.com/a.jpg",    "x_position":"12",    "y_position":"12",    "percentSize":"10"},
+        {"URL": "http://www.b.com/b.jpg",    "x_position":"13",    "y_position":"13",    "percentSize":"20"},            
+        {"URL": "http://www.c.com/c.jpg",    "x_position":"14",    "y_position":"14",    "percentSize":"30"}            
+    ],
+    "outputSize": 40
+}
