@@ -3,11 +3,9 @@ require 'rmagick'
 require 'json'
 include Magick
 
-# Read JSON from a file, iterate over objects
+# Read JSON from a file and extract parameters
 file = File.read("output_format.json")
 data_hash = JSON.parse(file)
-
-# Extract paramaters
 m_name = data_hash["name"]
 m_width = data_hash["width"]
 m_height = data_hash["height"]
@@ -23,7 +21,6 @@ m_inputImg.each do |item|
 	m_image = ImageList.new(item["URL"]).first
 	m_image.resize_to_fill!(m_width*(item["percentSize"].to_f/100), m_height*(item["percentSize"].to_f/100))
 	m_baseFrame.composite!(m_image, item["x_position"].to_i, item["y_position"].to_i, Magick::OverCompositeOp)
-	
 end
 
 # Print result
