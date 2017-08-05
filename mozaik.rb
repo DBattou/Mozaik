@@ -15,16 +15,16 @@ m_backgroundColor = data_hash["backgroundColor"]
 m_inputImg = data_hash["inputImg"]
 m_outputSize = data_hash["outputSize"]
 
-# Read image from URL
-m_inputImg.each do |item|
-	p item["URL"]
-end
-image = ImageList.new("http://www.larousse.fr/encyclopedie/data/images/1006415-Poney.jpg").first
+# Create colored base frame
+m_baseFrame = Image.new(m_width, m_height) { self.background_color = m_backgroundColor }
 
-# Create a 100x100 red image.
-f = Image.new(100,100) { self.background_color = m_backgroundColor }
-f.write("testImg.jpg")
+# Read image from URL, resize and compose
+m_inputImg.each do |item|
+	m_image = ImageList.new(item["URL"]).first
+	m_image.resize_to_fill!(m_width*(item["percentSize"].to_f/100),m_height*(item["percentSize"].to_f/100))
+	m_baseFrame.composite!(m_image, item["x_position"].to_i, item["y_position"].to_i, Magick::OverCompositeOp)
+end
 
 # Print result
-image.write("another_filename.jpg")
-puts "This image is #{image.columns}x#{image.rows} pixels"
+m_baseFrame.write(m_name)
+puts "This image is #{m_baseFrame.columns}x#{m_baseFrame.rows} pixels"

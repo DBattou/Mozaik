@@ -1,12 +1,12 @@
 {
-    "name": "example.jpg",
+    "name": "SuperPicture.jpg",
     "width": 900,
-    "height": 950,
+    "height": 900,
     "backgroundColor": "purple", 
     "inputImg": [
-        {"URL": "http://www.a.com/a.jpg",    "x_position":"12",    "y_position":"12",    "percentSize":"10"},
-        {"URL": "http://www.b.com/b.jpg",    "x_position":"13",    "y_position":"13",    "percentSize":"20"},            
-        {"URL": "http://www.c.com/c.jpg",    "x_position":"14",    "y_position":"14",    "percentSize":"30"}            
+        {"URL": "https://supermariorun.com/img/stage/mario03.png",    "x_position":"-10",    "y_position":"10",    "percentSize":"40"},
+        {"URL": "https://assets-cdn.github.com/images/modules/open_graph/github-octocat.png",    "x_position":"450",    "y_position":"450",    "percentSize":"2000"},            
+        {"URL": "https://s-media-cache-ak0.pinimg.com/originals/42/00/ac/4200accc13ce48f7c39ea674f1da8c89.png",    "x_position":"7000000",    "y_position":"700",    "percentSize":"10"}            
     ],
     "outputSize": 40
 }
