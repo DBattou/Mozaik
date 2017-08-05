@@ -21,8 +21,9 @@ m_baseFrame = Image.new(m_width, m_height) { self.background_color = m_backgroun
 # Read image from URL, resize and compose
 m_inputImg.each do |item|
 	m_image = ImageList.new(item["URL"]).first
-	m_image.resize_to_fill!(m_width*(item["percentSize"].to_f/100),m_height*(item["percentSize"].to_f/100))
+	m_image.resize_to_fill!(m_width*(item["percentSize"].to_f/100), m_height*(item["percentSize"].to_f/100))
 	m_baseFrame.composite!(m_image, item["x_position"].to_i, item["y_position"].to_i, Magick::OverCompositeOp)
+	
 end
 
 # Print result
