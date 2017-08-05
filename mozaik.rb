@@ -3,7 +3,6 @@ require 'rmagick'
 require 'json'
 include Magick
 
-
 # Read JSON from a file, iterate over objects
 file = File.read("output_format.json")
 data_hash = JSON.parse(file)
@@ -16,13 +15,15 @@ m_backgroundColor = data_hash["backgroundColor"]
 m_inputImg = data_hash["inputImg"]
 m_outputSize = data_hash["outputSize"]
 
-
 # Read image from URL
 m_inputImg.each do |item|
 	p item["URL"]
 end
 image = ImageList.new("http://www.larousse.fr/encyclopedie/data/images/1006415-Poney.jpg").first
 
+# Create a 100x100 red image.
+f = Image.new(100,100) { self.background_color = m_backgroundColor }
+f.write("testImg.jpg")
 
 # Print result
 image.write("another_filename.jpg")
