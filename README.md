@@ -1,9 +1,9 @@
 # Mozaik
 Ruby APP. Create an image made of several images
 
-mozaik.rb uses RMagick for manipulating images. mozaik.rb will parse input.json and create an SuperPicture.jpg made with the images listed in the .json file. 
+mozaik.rb uses RMagick for manipulating images. mozaik.rb will parse input.json and create SuperPicture.jpg made with the images listed in the .json file. 
 
-Launch mozaik.rb 
+To launch mozaik 
 ```ruby
-ruby mozaik.rb
+ruby main.rb input_info.json
 ```
