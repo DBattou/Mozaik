@@ -3,6 +3,14 @@ require 'rmagick'
 require 'json'
 include Magick
 
+if ARGV.empty?
+  	puts "No argument provided. Usage: ruby mozaik.rb [ filename ] "
+  	exit
+elsif ARGV.length > 1
+	puts "Too many arguments provided. Usage: ruby mozaik.rb [ filename ] "
+  	exit
+end
+
 ImgDetails = Struct.new(:name, :width, :height, :backgroundColor, :inputImg, :outputSize)
 
 # Read JSON from a file and extract parameters
@@ -51,4 +59,4 @@ end
 
 # Print result
 finalImage.write(inputData.name)
-finalImage.display
+puts "This image is #{finalImage.columns}x#{finalImage.rows} pixels"
