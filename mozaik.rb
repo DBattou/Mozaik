@@ -24,5 +24,8 @@ class Mozaik
 		end
 		return @baseFrame
 	end
+	def get_name
+		return @name
+	end
 end
 
