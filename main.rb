@@ -11,14 +11,20 @@ elsif ARGV.length > 1
   	exit
 end
 
-
+# Parse JSON file
 infos = JSON.parse(File.read(ARGV[0]))
+
+# Create Mozaik obj
 mozaik = Mozaik.new(infos)
+
+# Adding images to the mosaic
 infos["inputImg"].each do |image|
 	mozaik.add_mosaic_parts(image)
 end
+
+# Create the output image
 finalImage = mozaik.render_final_image()
 
 # Print result
 finalImage.write(mozaik.get_name())
-puts "This image is #{finalImage.columns}x#{finalImage.rows} pixels"
+puts "The mosaic is #{finalImage.columns}x#{finalImage.rows} pixels"
