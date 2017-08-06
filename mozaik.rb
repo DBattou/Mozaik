@@ -17,20 +17,38 @@ def read_input (file)
 	return ImgDetails.new(name, width, height, backgroundColor, inputImg, outputSize)
 end
 
-inputData = read_input("input_informations.json")
-p inputData.inputImg[0]["percentSize"]
+# Read image from URL
+def read_url_image(adress)
+	return ImageList.new(adress).first
+end
+
+# Resize image
+def resize_image(image, width, height)
+	return image.resize_to_fill(width, height)
+end
+
+# Insert image into base frame
+def insert_image(baseImage, imageToInsert, x_position, y_position)
+	return baseImage.composite(imageToInsert, x_position, y_position, Magick::OverCompositeOp)
+end
+
+
+# Extract data from the input file
+inputData = read_input("input_info.json")
 
 # Create colored base for the final image
-imageToPrint = Image.new(inputData.width, inputData.height) { self.background_color = inputData.backgroundColor }
+finalImage = Image.new(inputData.width, inputData.height) { self.background_color = inputData.backgroundColor }
 
 # Read image from URL, resize and compose
 inputData.inputImg.each do |item|
-	imageToInsert = ImageList.new(item["URL"]).first
-	resizeFactor = item["percentSize"].to_f/100
-	imageToInsert.resize_to_fill!(inputData.width*resizeFactor, inputData.height*resizeFactor)
-	imageToPrint.composite!(imageToInsert, item["x_position"].to_i, item["y_position"].to_i, Magick::OverCompositeOp)
+	imageToInsert = read_url_image(item["URL"])
+	factor = item["percentSize"].to_f/100
+	width = inputData.width*factor
+	height = inputData.height*factor
+	imageToInsert = resize_image(imageToInsert, width, height)
+	finalImage = insert_image(finalImage, imageToInsert, item["x_position"].to_i, item["y_position"].to_i)
 end
 
 # Print result
-imageToPrint.write(inputData.name)
-puts "This image is #{imageToPrint.columns}x#{imageToPrint.rows} pixels"
+finalImage.write(inputData.name)
+finalImage.display
