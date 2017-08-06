@@ -3,27 +3,34 @@ require 'rmagick'
 require 'json'
 include Magick
 
-# Read JSON from a file and extract parameters
-file = File.read("output_format.json")
-data_hash = JSON.parse(file)
-name = data_hash["name"]
-width = data_hash["width"]
-height = data_hash["height"]
-backgroundColor = data_hash["backgroundColor"]
-inputImg = data_hash["inputImg"]
-outputSize = data_hash["outputSize"]
+ImgDetails = Struct.new(:name, :width, :height, :backgroundColor, :inputImg, :outputSize)
 
-# Create colored base frame
-baseFrame = Image.new(width, height) { self.background_color = backgroundColor }
+# Read JSON from a file and extract parameters
+def read_input (file)
+	data_hash = JSON.parse(File.read(file))
+	name = data_hash["name"]
+	width = data_hash["width"]
+	height = data_hash["height"]
+	backgroundColor = data_hash["backgroundColor"]
+	inputImg = data_hash["inputImg"]
+	outputSize = data_hash["outputSize"]
+	return ImgDetails.new(name, width, height, backgroundColor, inputImg, outputSize)
+end
+
+inputData = read_input("input_informations.json")
+p inputData.inputImg[0]["percentSize"]
+
+# Create colored base for the final image
+imageToPrint = Image.new(inputData.width, inputData.height) { self.background_color = inputData.backgroundColor }
 
 # Read image from URL, resize and compose
-inputImg.each do |item|
-	image = ImageList.new(item["URL"]).first
-	resize_factor = item["percentSize"].to_f/100
-	image.resize_to_fill!(width*resize_factor, height*resize_factor)
-	baseFrame.composite!(image, item["x_position"].to_i, item["y_position"].to_i, Magick::OverCompositeOp)
+inputData.inputImg.each do |item|
+	imageToInsert = ImageList.new(item["URL"]).first
+	resizeFactor = item["percentSize"].to_f/100
+	imageToInsert.resize_to_fill!(inputData.width*resizeFactor, inputData.height*resizeFactor)
+	imageToPrint.composite!(imageToInsert, item["x_position"].to_i, item["y_position"].to_i, Magick::OverCompositeOp)
 end
 
 # Print result
-baseFrame.write(name)
-puts "This image is #{baseFrame.columns}x#{baseFrame.rows} pixels"
+imageToPrint.write(inputData.name)
+puts "This image is #{imageToPrint.columns}x#{imageToPrint.rows} pixels"

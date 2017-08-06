@@ -6,21 +6,21 @@
     "inputImg": [
         {
             "URL": "https://assets-cdn.github.com/images/modules/open_graph/github-octocat.png",    
-            "x_position":"0",
-            "y_position":"0",
-            "percentSize":"50"
+            "x_position":0,
+            "y_position":0,
+            "percentSize":50
         },
         {
             "URL": "https://www.franceinter.fr/s3/cruiser-production/2015/09/719ac569-5a01-11e5-bab6-005056a87c30/640_meamario.jpg",
-            "x_position":"450",
-            "y_position":"450",
-            "percentSize":"40"
+            "x_position":450,
+            "y_position":450,
+            "percentSize":40
         },
         {
             "URL": "https://s-media-cache-ak0.pinimg.com/736x/42/00/ac/4200accc13ce48f7c39ea674f1da8c89--awesome-t-shirts-starcraft.jpg",
-            "x_position":"700",
-            "y_position":"700",
-            "percentSize":"10"
+            "x_position":700,
+            "y_position":700,
+            "percentSize":10
         }
     ],
     "outputSize": 40
