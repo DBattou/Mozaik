@@ -2,7 +2,7 @@
     "name": "SuperPicture.jpg",
     "width": 900,
     "height": 900,
-    "backgroundColor": "purple", 
+    "backgroundColor": "purple",
     "inputImg": [
         {
             "URL": "https://assets-cdn.github.com/images/modules/open_graph/github-octocat.png",    
