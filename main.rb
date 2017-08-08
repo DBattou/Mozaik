@@ -22,6 +22,6 @@ if mozaik.name.split(//).last(4).join != ".jpg"
     raise "The output format is wrong. Must be \".jpg\" "
 else
     finalImage.write(mozaik.name)
-    puts "The mosaic is #{finalImage.columns}x#{finalImage.rows} pixels"
+    puts "The mosaic #{mozaik.name} is #{finalImage.columns}x#{finalImage.rows} pixels"
 end
 
