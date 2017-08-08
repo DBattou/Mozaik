@@ -5,19 +5,19 @@
     "backgroundColor": "purple",
     "inputImg": [
         {
-            "URL": "https://assets-cdn.github.com/images/modules/open_graph/github-octocat.png",    
+            "URL": "http://wallpaper-gallery.net/images/image/image-13.jpg",
             "x_pos":0,
             "y_pos":0,
             "percentSize":50
         },
         {
-            "URL": "https://www.franceinter.fr/s3/cruiser-production/2015/09/719ac569-5a01-11e5-bab6-005056a87c30/640_meamario.jpg",
+            "URL": "http://wallpaper-gallery.net/images/image/image-13.jpg",
             "x_pos":450,
             "y_pos":450,
             "percentSize":40
         },
         {
-            "URL": "https://s-media-cache-ak0.pinimg.com/736x/42/00/ac/4200accc13ce48f7c39ea674f1da8c89--awesome-t-shirts-starcraft.jpg",
+            "URL": "http://wallpaper-gallery.net/images/image/image-13.jpg",
             "x_pos":225,
             "y_pos":700,
             "percentSize":10
