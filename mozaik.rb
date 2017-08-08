@@ -12,7 +12,8 @@ class Mozaik
         @width = test_input(infos["width"], 100)
         @height = test_input(infos["height"], 100)
         @backgroundColor = test_input(infos["backgroundColor"], "blue")
-        @baseFrame = Image.new(@width, @height) { self.background_color =  @backgroundColor.to_s }
+        backgroundColor = @backgroundColor
+        @baseFrame = Image.new(@width, @height) { self.background_color = backgroundColor }
         @mozaikParts = infos["inputImg"]
         @outputSize = test_input(infos["outputSize"], 50)
     end
